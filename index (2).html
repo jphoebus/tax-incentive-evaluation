@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checking the Books: How Ten States Evaluate Their Tax Incentives</title>
+<meta name="description" content="A ten-state comparison of how states evaluate their tax incentives, who does the work, what is covered, and what happens to programs after review. Current as of September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --limestone: #EDF0F1;
+    --paper: #FFFFFF;
+    --ink: #1B2631;
+    --slate: #52606D;
+    --rule: #CBD2D9;
+    --accent: #1F5C4A;
+    --accent-soft: #DCEBE5;
+    --font: "Public Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--limestone);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .measure { max-width: 68ch; }
+
+  /* Header */
+  header { padding: 64px 0 40px; }
+  h1 {
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    max-width: 18ch;
+  }
+  .lede { font-size: 1.15rem; color: var(--slate); margin: 0; }
+
+  /* Where each state stands */
+  .standing {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    border-top: 3px solid var(--ink);
+    margin-top: 40px;
+  }
+  .standing div {
+    padding: 16px 16px 20px 0;
+    border-right: 1px solid var(--rule);
+    padding-left: 16px;
+  }
+  .standing div:first-child { padding-left: 0; }
+  .standing div:last-child { border-right: 0; }
+  .standing strong { display: block; font-size: 1.25rem; font-weight: 700; }
+  .standing span { display: block; color: var(--slate); font-size: 0.95rem; }
+  .standing time { display: block; font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-top: 6px; }
+
+  /* Comparison */
+  section { padding: 48px 0; }
+  h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 20px; align-items: center; }
+  .filters p { margin: 0 8px 0 0; color: var(--slate); font-size: 0.95rem; }
+  .chip {
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border: 1.5px solid var(--accent);
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="false"] { background: transparent; color: var(--accent); }
+  .table-scroll {
+    overflow-x: auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.92rem; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+  thead th {
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--ink);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+  }
+  tbody th {
+    font-weight: 600;
+    color: var(--slate);
+    width: 170px;
+    position: sticky;
+    left: 0;
+    background: var(--paper);
+  }
+  tr.group th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  [hidden] { display: none !important; }
+  td.empty { color: var(--slate); font-style: italic; }
+  td.sources a { display: block; word-break: break-word; margin-bottom: 4px; }
+  .status-msg { padding: 24px; color: var(--slate); }
+
+  /* Analysis */
+  .analysis { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .analysis h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 4px; }
+  .analysis p { margin: 0; }
+  .question {
+    margin-top: 32px;
+    padding-left: 20px;
+    border-left: 4px solid var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  ul.watch { padding-left: 1.1em; margin: 12px 0 0; }
+  ul.watch li { margin-bottom: 10px; }
+
+  footer { border-top: 1px solid var(--rule); padding: 40px 0 64px; color: var(--slate); font-size: 0.95rem; }
+  footer p { margin: 0 0 12px; }
+
+  @media (max-width: 800px) {
+    .standing { grid-template-columns: 1fr 1fr; }
+    .standing div { border-right: 0; border-bottom: 1px solid var(--rule); padding-left: 0; }
+    .analysis { grid-template-columns: 1fr; gap: 16px; }
+    header { padding-top: 40px; }
+  }
+  @media print {
+    .filters { display: none; }
+    body { background: #fff; }
+    .table-scroll { overflow: visible; border: 0; }
+    thead th, tbody th { position: static; }
+  }
+  .standing div { border-bottom: 1px solid var(--rule); }
+  .chip.group-chip { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .chip.group-chip[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .method { margin-top: 20px; color: var(--slate); font-size: 0.95rem; }
+  table { min-width: 1400px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>How states check their tax incentives</h1>
+    <p class="lede measure">Who evaluates each state's incentives, what gets reviewed, and what happens to programs after an evaluation. Ten states, current as of September 2026.</p>
+    <p class="method measure">This comparison covers the five states in the <a href="https://jphoebus.github.io/state-incentive-comparison/">data center incentive comparison</a>, plus five states with established statutory evaluation requirements, each representing a different evaluation model and region. All five were rated leading states in The Pew Charitable Trusts' 2017 national assessment.</p>
+
+    <div class="standing" aria-label="Evaluation models in this comparison">
+      <div><strong>Legislative audit</strong><span>Virginia, Washington</span></div>
+      <div><strong>Legislative fiscal staff</strong><span>Pennsylvania, Maryland, Indiana, Florida</span></div>
+      <div><strong>Executive agency</strong><span>Iowa</span></div>
+      <div><strong>Commission and contractor</strong><span>Oklahoma</span></div>
+      <div><strong>Auditor and universities</strong><span>Georgia</span></div>
+      <div><strong>Legislative committee</strong><span>Ohio</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="comparison">
+    <div class="wrap">
+      <h2>Side-by-side comparison</h2>
+      <p class="measure">Show all ten states, one group, or the states you choose. The table scrolls sideways.</p>
+      <div class="filters" role="group" aria-label="State groups"><p>Groups:</p><button class="chip group-chip" type="button" aria-pressed="true" data-group="all">All ten</button><button class="chip group-chip" type="button" aria-pressed="false" data-group="dc">Data center states</button><button class="chip group-chip" type="button" aria-pressed="false" data-group="ev">Established evaluation states</button></div>
+      <div class="filters" id="filters" role="group" aria-label="States to compare"><p>States:</p><button class="chip" type="button" aria-pressed="true" data-state="pennsylvania" data-g="dc">Pennsylvania</button><button class="chip" type="button" aria-pressed="true" data-state="virginia" data-g="dc">Virginia</button><button class="chip" type="button" aria-pressed="true" data-state="ohio" data-g="dc">Ohio</button><button class="chip" type="button" aria-pressed="true" data-state="maryland" data-g="dc">Maryland</button><button class="chip" type="button" aria-pressed="true" data-state="georgia" data-g="dc">Georgia</button><button class="chip" type="button" aria-pressed="true" data-state="washington" data-g="ev">Washington</button><button class="chip" type="button" aria-pressed="true" data-state="indiana" data-g="ev">Indiana</button><button class="chip" type="button" aria-pressed="true" data-state="iowa" data-g="ev">Iowa</button><button class="chip" type="button" aria-pressed="true" data-state="oklahoma" data-g="ev">Oklahoma</button><button class="chip" type="button" aria-pressed="true" data-state="florida" data-g="ev">Florida</button></div>
+      <div class="table-scroll" tabindex="0" aria-label="Comparison table">
+        <table id="table">
+<thead><tr><th scope="col"></th>
+<th scope="col" data-state="pennsylvania">Pennsylvania</th>
+<th scope="col" data-state="virginia">Virginia</th>
+<th scope="col" data-state="ohio">Ohio</th>
+<th scope="col" data-state="maryland">Maryland</th>
+<th scope="col" data-state="georgia">Georgia</th>
+<th scope="col" data-state="washington">Washington</th>
+<th scope="col" data-state="indiana">Indiana</th>
+<th scope="col" data-state="iowa">Iowa</th>
+<th scope="col" data-state="oklahoma">Oklahoma</th>
+<th scope="col" data-state="florida">Florida</th>
+</tr></thead><tbody>
+<tr class="group"><th colspan="11" scope="colgroup">The law</th></tr>
+<tr><th scope="row">Why included</th>
+<td data-state="pennsylvania">Data center comparison state</td>
+<td data-state="virginia">Data center comparison state</td>
+<td data-state="ohio">Data center comparison state</td>
+<td data-state="maryland">Data center comparison state</td>
+<td data-state="georgia">Data center comparison state</td>
+<td data-state="washington">Established evaluation state</td>
+<td data-state="indiana">Established evaluation state</td>
+<td data-state="iowa">Established evaluation state</td>
+<td data-state="oklahoma">Established evaluation state</td>
+<td data-state="florida">Established evaluation state</td>
+</tr>
+<tr><th scope="row">Law and year</th>
+<td data-state="pennsylvania">Act 48 of 2017 (Performance-Based Budgeting and Tax Credit Efficiency Act)</td>
+<td data-state="virginia">Continuing language in the Appropriation Act, renewed each biennium</td>
+<td data-state="ohio">H.B. 9, 131st General Assembly; committee first met in 2017. H.B. 66, 134th General Assembly, added property tax exemptions</td>
+<td data-state="maryland">H.B. 764 of 2012 (Tax Credit Evaluation Act); rewritten in 2021 (Ch. 575) as the Tax Expenditure Evaluation Act</td>
+<td data-state="georgia">S.B. 6 of 2021; O.C.G.A. § 28-5-41.1</td>
+<td data-state="washington">E.H.B. 1069 of 2006; RCW 43.136</td>
+<td data-state="indiana">H.E.A. 1020 of 2014; IC 2-5-3.2-1</td>
+<td data-state="iowa">Iowa Code § 2.48 (2010)</td>
+<td data-state="oklahoma">H.B. 2182 of 2015; 62 O.S. §§ 7001-7005</td>
+<td data-state="florida">Chapters 2013-39 and 2013-42; s. 288.0001, F.S.</td>
+</tr>
+<tr><th scope="row">Who evaluates</th>
+<td data-state="pennsylvania">Independent Fiscal Office</td>
+<td data-state="virginia">Joint Legislative Audit and Review Commission (JLARC) staff</td>
+<td data-state="ohio">Tax Expenditure Review Committee (six legislators plus the Tax Commissioner)</td>
+<td data-state="maryland">Department of Legislative Services</td>
+<td data-state="georgia">Department of Audits and Accounts, contracting with three state universities</td>
+<td data-state="washington">JLARC staff; Citizen Commission for Performance Measurement of Tax Preferences sets the schedule and comments</td>
+<td data-state="indiana">Legislative Services Agency, Office of Fiscal and Management Analysis</td>
+<td data-state="iowa">Iowa Department of Revenue, with advisory panels</td>
+<td data-state="oklahoma">Incentive Evaluation Commission, contracting with an outside research firm</td>
+<td data-state="florida">Office of Economic and Demographic Research (return on investment) and OPPAGA (program effectiveness)</td>
+</tr>
+<tr><th scope="row">Evaluation model</th>
+<td data-state="pennsylvania">Independent legislative fiscal office</td>
+<td data-state="virginia">Legislative audit agency</td>
+<td data-state="ohio">Legislative committee</td>
+<td data-state="maryland">Nonpartisan legislative staff</td>
+<td data-state="georgia">State auditor with university contractors</td>
+<td data-state="washington">Legislative audit agency with citizen commission</td>
+<td data-state="indiana">Nonpartisan legislative staff</td>
+<td data-state="iowa">Executive branch revenue agency</td>
+<td data-state="oklahoma">Appointed commission with outside contractor</td>
+<td data-state="florida">Two legislative offices</td>
+</tr>
+<tr class="group"><th colspan="11" scope="colgroup">How reviews work</th></tr>
+<tr><th scope="row">Review cycle</th>
+<td data-state="pennsylvania">Five years</td>
+<td data-state="virginia">Set by the Commission; annual summary report plus in-depth reviews of selected incentives</td>
+<td data-state="ohio">Each tax expenditure at least once every eight years</td>
+<td data-state="maryland">Since 2022, each business income tax credit with more than $5M in annual fiscal impact at least once every 10 years (seven years under the original law)</td>
+<td data-state="georgia">No fixed cycle; committee chairs request evaluations. Since 2025, credits or exemptions costing $20M+ a year must be evaluated before they sunset</td>
+<td data-state="washington">Ten years</td>
+<td data-state="indiana">Five years (first cycle, 2014 to 2018); seven years since 2019</td>
+<td data-state="iowa">Each tax credit at least once every five years</td>
+<td data-state="oklahoma">Four years</td>
+<td data-state="florida">Three years, rotating</td>
+</tr>
+<tr><th scope="row">What&#x27;s covered</th>
+<td data-state="pennsylvania">State tax credits</td>
+<td data-state="virginia">Grants, tax credits, sales tax exemptions, and other incentives</td>
+<td data-state="ohio">All tax expenditures, including exemptions</td>
+<td data-state="maryland">Mandatory cycle covers major business income tax credits; exemptions and preferences are evaluated only on request</td>
+<td data-state="georgia">Credits, deductions, and exemptions</td>
+<td data-state="washington">Tax preferences, including exemptions, credits, deductions, deferrals, and preferential rates (about 600)</td>
+<td data-state="indiana">State and local tax incentives, including exemptions, deductions, and credits</td>
+<td data-state="iowa">Tax credits the Department administers</td>
+<td data-state="oklahoma">Economic development incentives</td>
+<td data-state="florida">18 named economic development programs, including tax credits, refunds, and sales tax exemptions</td>
+</tr>
+<tr><th scope="row">Sales tax exemptions covered?</th>
+<td data-state="pennsylvania">No</td>
+<td data-state="virginia">Yes</td>
+<td data-state="ohio">Yes</td>
+<td data-state="maryland">On request only (since 2021)</td>
+<td data-state="georgia">Yes</td>
+<td data-state="washington">Yes</td>
+<td data-state="indiana">Yes</td>
+<td data-state="iowa">Statute defines tax expenditures to include exemptions; published Department evaluations focus on tax credits</td>
+<td data-state="oklahoma">Not yet verified</td>
+<td data-state="florida">Yes, for listed programs</td>
+</tr>
+<tr class="group"><th colspan="11" scope="colgroup">What happens after review</th></tr>
+<tr><th scope="row">Legislative action required?</th>
+<td data-state="pennsylvania">No</td>
+<td data-state="virginia">No</td>
+<td data-state="ohio">No</td>
+<td data-state="maryland">No</td>
+<td data-state="georgia">No</td>
+<td data-state="washington">No; the Legislative Auditor must recommend an action for each preference, and the Citizen Commission endorses or comments</td>
+<td data-state="indiana">No</td>
+<td data-state="iowa">No</td>
+<td data-state="oklahoma">No; the legislature reviews findings but does not have to reauthorize incentives</td>
+<td data-state="florida">No</td>
+</tr>
+<tr><th scope="row">How findings reach lawmakers</th>
+<td data-state="pennsylvania">Reviews go to the Performance-Based Budget Board and the chairs of the House and Senate Finance Committees, and are published online</td>
+<td data-state="virginia">Reports to the Commission, the Governor, and the General Assembly</td>
+<td data-state="ohio">Committee recommends continuing, modifying, repealing, or rescheduling each expenditure</td>
+<td data-state="maryland">Department reports to the General Assembly with a recommendation to continue, change, or terminate. The 2021 law repealed the earlier evaluation committee, which had to hold hearings and submit legislation with its recommendations</td>
+<td data-state="georgia">Requested by the chairs of House Ways and Means and Senate Finance; summaries attached to fiscal notes</td>
+<td data-state="washington">Reports to the Legislature with a recommendation to continue, allow to expire, modify, clarify, or terminate; the Citizen Commission holds public hearings and comments. New preferences must include a performance statement setting out objectives and metrics</td>
+<td data-state="indiana">A legislative commission holds public hearings and makes recommendations to the General Assembly</td>
+<td data-state="iowa">Evaluation studies filed with the legislature and published</td>
+<td data-state="oklahoma">Commission reports to the Governor and legislature each December</td>
+<td data-state="florida">Annual reports to the Legislature with recommendations</td>
+</tr>
+<tr><th scope="row">Documented outcomes</th>
+<td data-state="pennsylvania">No program changes directly attributed to first-cycle review findings identified</td>
+<td data-state="virginia">2020: JLARC recommended eliminating both coal tax credits after finding minimal economic benefit. 2021: legislation ended both credits as of Dec 31, 2021</td>
+<td data-state="ohio">First report (Nov 2018) recommended no eliminations. Committee had no dedicated staff or funding for outside expertise</td>
+<td data-state="maryland">2016: after an evaluation flagged flaws in project scoring, lawmakers extended the historic rehabilitation credit five years and revised the scoring system. The 2020 data center exemption has not been evaluated</td>
+<td data-state="georgia">Data center exemption evaluated in 2022 and 2025, finding a negative net fiscal impact; 2026 bills to end it early did not pass</td>
+<td data-state="washington">Recommendations are not always adopted: a 2010 recommendation to repeal two interstate transportation preferences was not endorsed by the Citizen Commission, and the preferences remain. 2024 reviews recommended letting four aluminum smelter preferences expire and terminating four others</td>
+<td data-state="indiana">After LSA&#x27;s 2012 review of income tax credits (a predecessor to the 2014 law), 3 credits were modified and 8 were repealed, according to LSA. Legislation in 2014 (HEA 1380) repealed several credits, including the ethanol production and new employer credits</td>
+<td data-state="iowa">37 income tax credit evaluations completed from 2007 to 2018. No program change directly attributed to an evaluation identified. A 2018 law (SF 2417) created a legislative Tax Credit Review Committee</td>
+<td data-state="oklahoma">2016: commission approved a report recommending the zero-emission (wind) credit be capped or narrowed. 2017: legislation moved the eligibility deadline from 2021 to July 1, 2017, during a budget shortfall</td>
+<td data-state="florida">EDR found the Enterprise Zone Program had a weaker return on investment than other incentives, largely because it moved activity within Florida rather than growing the economy. An extension bill passed the House but died in the Senate, and the program expired Dec 31, 2015</td>
+</tr>
+<tr class="group"><th colspan="11" scope="colgroup">Sources and status</th></tr>
+<tr><th scope="row">Still to verify</th>
+<td class="empty" data-state="pennsylvania">Nothing outstanding</td>
+<td class="empty" data-state="virginia">Nothing outstanding</td>
+<td data-state="ohio">Current codification: the original section (R.C. 5703.95) shows as repealed effective April 2023 by H.B. 66, which expanded the committee&#x27;s scope; activity since 2023</td>
+<td class="empty" data-state="maryland">Nothing outstanding</td>
+<td class="empty" data-state="georgia">Nothing outstanding</td>
+<td class="empty" data-state="washington">Nothing outstanding</td>
+<td class="empty" data-state="indiana">Nothing outstanding</td>
+<td class="empty" data-state="iowa">Nothing outstanding</td>
+<td data-state="oklahoma">Whether sales tax exemptions are in scope</td>
+<td class="empty" data-state="florida">Nothing outstanding</td>
+</tr>
+<tr><th scope="row">Sources</th>
+<td class="sources" data-state="pennsylvania"><a href="https://www.ifo.state.pa.us/releases/530/Historic-Preservation-Tax-Credit/" rel="noopener">ifo.state.pa.us</a><a href="https://www.legis.state.pa.us/cfdocs/legis/li/uconsCheck.cfm?yr=2017&amp;sessInd=0&amp;act=48" rel="noopener">legis.state.pa.us</a></td>
+<td class="sources" data-state="virginia"><a href="https://jlarc.virginia.gov/econ-development.asp" rel="noopener">jlarc.virginia.gov</a><a href="https://virginiamercury.com/2020/09/14/audit-commission-recommends-eliminating-virginias-coal-tax-credits/" rel="noopener">virginiamercury.com</a><a href="https://www.tax.virginia.gov/expired-or-repealed-credits" rel="noopener">tax.virginia.gov</a></td>
+<td class="sources" data-state="ohio"><a href="https://legislature.ohio.gov//download?key=6312" rel="noopener">legislature.ohio.gov</a><a href="https://www.ohiomfg.com/?p=42629" rel="noopener">ohiomfg.com</a><a href="https://www.policymattersohio.org/press-room/2018/06/04/tax-expenditure-review-committee-should-scrutinize-tax-breaks" rel="noopener">policymattersohio.org</a></td>
+<td class="sources" data-state="maryland"><a href="https://mgaleg.maryland.gov/2021RS/Chapters_noln/CH_575_hb1086t.pdf" rel="noopener">mgaleg.maryland.gov</a><a href="https://www.pewtrusts.org/en/research-and-analysis/fact-sheets/2017/05/state-tax-incentive-evaluation-ratings-maryland" rel="noopener">pewtrusts.org</a></td>
+<td class="sources" data-state="georgia"><a href="https://www.audits2.ga.gov/tax-incentive-evaluations-faqs/" rel="noopener">audits2.ga.gov</a><a href="https://www.audits2.ga.gov/reports/summaries/georgia-data-center-sales-use-tax-exemption/" rel="noopener">audits2.ga.gov</a></td>
+<td class="sources" data-state="washington"><a href="https://leg.wa.gov/jlarc/taxReports/2018/printF.pdf" rel="noopener">leg.wa.gov</a><a href="https://leg.wa.gov/about-the-legislature/committees/joint/citizen-commission-for-performance-measurement-of-tax-preferences/schedule/" rel="noopener">leg.wa.gov</a><a href="https://leg.wa.gov/jlarc/taxReports/2023/interstate/p_1/default.html" rel="noopener">leg.wa.gov</a><a href="https://leg.wa.gov/jlarc/taxReports/2024/overview.html" rel="noopener">leg.wa.gov</a></td>
+<td class="sources" data-state="indiana"><a href="https://www.pew.org/en/research-and-analysis/fact-sheets/2017/05/state-tax-incentive-evaluation-ratings-indiana" rel="noopener">pew.org</a><a href="https://documents.ncsl.org/wwwncsl/Fiscal/2022-Indiana-Tax-Incentive-Evaluation-EDGE-tax-credit.pdf" rel="noopener">documents.ncsl.org</a><a href="https://taxadmin.org/wp-content/uploads/resources/13rev_est/holloway.pdf" rel="noopener">taxadmin.org</a><a href="https://WWW.IN.GOV/dor/files/dn41.pdf" rel="noopener">in.gov</a></td>
+<td class="sources" data-state="iowa"><a href="https://revenue.iowa.gov/news/2024-12-04/tax-credits-program-evaluation-study-reports-now-available" rel="noopener">revenue.iowa.gov</a><a href="https://revenue.iowa.gov/media/4052/download" rel="noopener">revenue.iowa.gov</a><a href="https://www.legis.iowa.gov:443/docs/publications/LU/1070351.pdf" rel="noopener">legis.iowa.gov</a><a href="https://www.legis.iowa.gov/docs/code/2012/2.48.pdf" rel="noopener">legis.iowa.gov</a></td>
+<td class="sources" data-state="oklahoma"><a href="https://okpolicy.org/incentive-evaluation-commission/" rel="noopener">okpolicy.org</a><a href="https://stateimpact.npr.org/oklahoma/2016/11/23/political-momentum-building-to-trim-tax-breaks-for-wind-industry/" rel="noopener">stateimpact.npr.org</a><a href="https://www.manufacturing.net/home/news/13160615/oklahoma-to-end-tax-credit-that-propelled-wind-production" rel="noopener">manufacturing.net</a></td>
+<td class="sources" data-state="florida"><a href="https://edr.state.fl.us/Content/returnoninvestment/" rel="noopener">edr.state.fl.us</a><a href="https://oppaga.fl.gov/Products/ReportDetail?rn=14-01" rel="noopener">oppaga.fl.gov</a><a href="https://www.pewtrusts.org/en/research-and-analysis/fact-sheets/2017/05/state-tax-incentive-evaluation-ratings-florida" rel="noopener">pewtrusts.org</a><a href="https://www.edr.state.fl.us/Content/returnoninvestment/EnterpriseZonePresentation.pdf" rel="noopener">edr.state.fl.us</a><a href="https://news.wgcu.org/2015-05-15/state-tax-incentive-program-faces-expiration" rel="noopener">news.wgcu.org</a></td>
+</tr>
+<tr><th scope="row">Last updated</th>
+<td data-state="pennsylvania">2026-09-26</td>
+<td data-state="virginia">2026-09-26</td>
+<td data-state="ohio">2026-09-26</td>
+<td data-state="maryland">2026-09-26</td>
+<td data-state="georgia">2026-09-26</td>
+<td data-state="washington">2026-09-26</td>
+<td data-state="indiana">2026-09-26</td>
+<td data-state="iowa">2026-09-26</td>
+<td data-state="oklahoma">2026-09-26</td>
+<td data-state="florida">2026-09-26</td>
+</tr>
+</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="analysis">
+    <div class="wrap">
+      <div class="analysis">
+        <div>
+          <h2>What stands out</h2>
+          <h3>Findings are advisory everywhere</h3>
+          <p>None of the ten states requires its legislature to act on an evaluation. Each process informs lawmakers; none decides for them. What varies is who chooses what gets reviewed, and when the findings arrive.</p>
+          <h3>Design shapes what gets reviewed</h3>
+          <p>Pennsylvania's review cycle covers tax credits. Maryland's mandatory cycle covers major business credits, with exemptions reviewed on request. Georgia's reviews follow committee requests and approaching sunsets. Among the five data center states, the fast-growing sales tax exemptions mostly sit outside a mandatory schedule.</p>
+          <h3>Findings carry weight at decision points</h3>
+          <p>Florida's Enterprise Zone Program expired at its scheduled sunset after weak return-on-investment findings. Oklahoma narrowed its wind credit during a budget shortfall. Maryland extended and revised its historic credit when it came up for renewal. Recommendations without a deadline attached, such as Washington's 2010 recommendation on interstate transportation preferences, have been easier to set aside.</p>
+        </div>
+        <div>
+          <h2>What to watch</h2>
+          <ul class="watch">
+            <li>Georgia's data center exemption will come under the state's new requirement to evaluate large incentives before they expire as its 2031 sunset approaches.</li>
+            <li>Maryland lawmakers can request an evaluation of the data center exemption as the repeal debate begins in January.</li>
+            <li>Virginia's Joint Subcommittee on Tax Policy reports on its data center exemption by December 15, 2026.</li>
+            <li>Pennsylvania's data center debate may raise the question of whether sales tax exemptions belong in the Act 48 review cycle.</li>
+          </ul>
+          <p class="question">The question that will shape the next round: whether states time their evaluations to the moments when lawmakers must decide, such as sunsets, renewals, and budget cycles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap measure">
+    <p>Compiled by Joshua Phoebus, former Director of Performance and Transformation in the Office of Pennsylvania Governor Tom Wolf, where he guided agencies on compliance with the tax credit reviews required under Act 48. <a href="https://www.linkedin.com/in/joshuaphoebus">LinkedIn</a> · <a href="https://www.joshuaphoebusllc.com">Website</a></p>
+    <p>Each state's sources are listed in the table. Where a detail could not be confirmed, the table says so. The underlying data is in <a href="tax-incentive-evaluation.csv">tax-incentive-evaluation.csv</a>. This comparison is for policy analysis and is not tax or legal advice.</p>
+  </div>
+</footer>
+
+<script>
+  // State buttons show or hide columns; group buttons select a set of states.
+  // The table itself is plain HTML, so it displays even if this script never runs.
+  var stateChips = document.querySelectorAll("#filters .chip");
+  var groupChips = document.querySelectorAll(".group-chip");
+  function setState(b, on) {
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    document.querySelectorAll('#table [data-state="' + b.dataset.state + '"]').forEach(function (c) { c.hidden = !on; });
+  }
+  stateChips.forEach(function (b) {
+    b.addEventListener("click", function () {
+      setState(b, b.getAttribute("aria-pressed") !== "true");
+      groupChips.forEach(function (g) { g.setAttribute("aria-pressed", "false"); });
+    });
+  });
+  groupChips.forEach(function (g) {
+    g.addEventListener("click", function () {
+      groupChips.forEach(function (x) { x.setAttribute("aria-pressed", x === g ? "true" : "false"); });
+      stateChips.forEach(function (b) { setState(b, g.dataset.group === "all" || b.dataset.g === g.dataset.group); });
+    });
+  });
+</script>
+</body>
+</html>
