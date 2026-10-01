@@ -31,6 +31,12 @@ Across all ten states, a key question is whether states time their evaluations t
 
 The full comparison is in [tax-incentive-evaluation.csv](tax-incentive-evaluation.csv), with one row per state and 14 columns covering the governing law, the evaluator and evaluation model, review cycle, scope, whether sales tax exemptions are covered, whether legislative action is required, how findings reach lawmakers, and documented outcomes. Each row lists its sources. Where a detail could not be confirmed, the file says so rather than guessing. This comparison is for policy analysis and is not tax or legal advice.
 
+## Related projects
+
+- [What states changed on data centers in 2026](https://jphoebus.github.io/data-center-legislation-2026/)
+- [State data center incentives, compared](https://jphoebus.github.io/state-incentive-comparison/)
+- [DOE's SPARK grid selections, tracked](https://jphoebus.github.io/spark-grid-tracker/)
+
 ## About me
 
 I'm Joshua Phoebus. I spent seven and a half years in Pennsylvania state government, including four years as Director of Performance and Transformation in the Office of Governor Tom Wolf, where I led the Commonwealth's performance-based budgeting engagement across twenty-nine executive agencies and guided agencies on compliance with the tax credit reviews required under Act 48.
