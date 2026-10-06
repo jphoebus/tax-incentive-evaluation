@@ -37,6 +37,7 @@ The full comparison is in [tax-incentive-evaluation.csv](tax-incentive-evaluatio
 - [State data center incentives, compared](https://jphoebus.github.io/state-incentive-comparison/)
 - [What counts as exempt data center equipment](https://jphoebus.github.io/data-center-exempt-equipment/)
 - [DOE's SPARK grid selections, tracked](https://jphoebus.github.io/spark-grid-tracker/)
+- [Who pays for data center power](https://jphoebus.github.io/large-load-tariffs/)
 
 ## About me
 
