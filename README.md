@@ -4,6 +4,8 @@ A comparison of how ten states evaluate their tax incentives: who does the work,
 
 **Interactive version:** [jphoebus.github.io/tax-incentive-evaluation](https://jphoebus.github.io/tax-incentive-evaluation/)
 
+**All projects:** [jphoebus.github.io](https://jphoebus.github.io/)
+
 ## Why this comparison
 
 States spend billions each year through tax credits and exemptions, and many have built formal processes to check whether those incentives work. This comparison looks past whether a process exists to how it is designed and what it has produced. It is a companion to the [data center incentive comparison](https://jphoebus.github.io/state-incentive-comparison/), which covers what five states give. This one covers whether states check.
